@@ -1,0 +1,30 @@
+body{
+    background-color: rgb(81, 150, 151);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1{
+    color: white;
+    padding: 10px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+p{
+    color: #f0f0f0;
+    font-size: 18px;
+    line-height: 1.4;
+    margin: 5px;
+    text-shadow: 2px 2px 5px #000000;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+p > strong{
+    color: rgb(243, 223, 38);
+    font-size: large;
+    
+} 
