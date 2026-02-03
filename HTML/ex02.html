@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Exemplo 02 - Variáveis em JavaScript</title>
+    <link rel="stylesheet" href="../style/aula2.css"/>
+</head>
+
+<body>
+<main>
+    <header>
+        <span class="badge">JavaScript Basics · Variables</span>
+        <h1>Exemplo de Tratamento de Dados</h1>
+    </header>
+
+    <section>
+        <p>
+            Roteiro de estudo sobre tratamento de dados e variáveis em JavaScript.
+        </p>
+
+        <p>
+            Em JavaScript, temos três formas principais de declarar variáveis:
+            <strong>var</strong>, <strong>let</strong> e <strong>const</strong>.
+        </p>
+
+        <p>
+            <strong>Var</strong> é uma forma mais antiga e hoje considerada obsoleta,
+            pois possui escopo confuso e pode gerar comportamentos inesperados.
+        </p>
+
+        <p>
+            <strong>Let</strong> é a forma moderna, com escopo de bloco,
+            trazendo mais previsibilidade e segurança ao código.
+        </p>
+
+        <p>
+            <strong>Const</strong> é utilizada para valores que não devem ser
+            reatribuídos após a definição.
+        </p>
+    </section>
+    <section class="calc">
+        <h2>Exemplo prático</h2>
+
+        <p>Digite dois números para somar:</p>
+
+        <label for="n1"></label><input class="input-number" type="number" id="n1" placeholder="Primeiro número">
+        <label for="n2"></label><input class="input-number" type="number" id="n2" placeholder="Segundo número">
+
+        <button id="btnSomar">Somar</button>
+
+        <p id="resultado"></p>
+    </section>
+
+</main>
+
+<script defer
+        src="../Scripts/aula02.js"></script>
+</body>
+</html>

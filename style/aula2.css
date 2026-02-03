@@ -1,0 +1,219 @@
+/* Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    /* Base */
+    --bg: #070A12;
+    --bg-2: #0B1020;
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-2: rgba(255, 255, 255, 0.08);
+    --border: rgba(255, 255, 255, 0.10);
+
+    /* Text */
+    --text: rgba(255, 255, 255, 0.92);
+    --muted: rgba(255, 255, 255, 0.68);
+
+    /* Accent (neon controlado) */
+    --aqua: #22D3EE;
+    /* cyan */
+    --violet: #A78BFA;
+    /* roxo */
+    --pink: #FB7185;
+    /* rosado */
+    --accent: var(--aqua);
+
+    /* Layout */
+    --maxw: 920px;
+    --radius: 18px;
+
+    /* Shadows / glow */
+    --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    --glow: 0 0 0 1px rgba(34, 211, 238, 0.14), 0 0 36px rgba(34, 211, 238, 0.14);
+
+    /* Font stack (boa no Windows + japonês) */
+    --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+        "Noto Sans", "Hiragino Sans", "Yu Gothic", "Meiryo", Arial, sans-serif;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100svh;
+    font-family: var(--font);
+    color: var(--text);
+    line-height: 1.7;
+    letter-spacing: 0.2px;
+
+    /* Fundo: gradientes + grid sutil "tech" */
+    background:
+        radial-gradient(900px 500px at 15% 10%, rgba(34, 211, 238, 0.18), transparent 60%),
+        radial-gradient(700px 420px at 90% 18%, rgba(40, 31, 65, 0.16), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+    padding: 56px 18px;
+    overflow-x: hidden;
+}
+
+/* Grid overlay (bem leve) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    opacity: 0.18;
+    -webkit-mask-image: radial-gradient(circle at 30% 10%, black 20%, transparent 70%);
+    mask-image: radial-gradient(circle at 30% 10%, black 20%, transparent 70%);
+}
+
+/* Spotlight */
+body::after {
+    content: "";
+    position: fixed;
+    inset: -200px;
+    pointer-events: none;
+    background: radial-gradient(600px 400px at 30% 15%, rgba(34, 211, 238, 0.10), transparent 65%);
+    filter: blur(8px);
+    opacity: 0.9;
+}
+
+.badge {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 14px;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+
+    color: rgba(34, 211, 238, 0.95);
+    background: rgba(34, 211, 238, 0.10);
+
+    border: 1px solid rgba(34, 211, 238, 0.25);
+    border-radius: 999px;
+
+    box-shadow:
+        0 0 0 1px rgba(5, 65, 75, 0.08),
+        0 0 18px rgba(1, 33, 37, 0.411);
+}
+
+/* Centraliza sem precisar mudar o HTML */
+body>h1,
+body>p {
+    max-width: var(--maxw);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+    /* acima dos overlays */
+}
+
+/* Título com “neon underline” */
+h1 {
+    margin: 0 0 18px;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: 0.6px;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    width: min(140px, 40vw);
+    height: 3px;
+    margin-top: 14px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(34, 211, 238, 0.9), rgba(167, 139, 250, 0.7), transparent);
+    box-shadow: 0 0 22px rgba(34, 211, 238, 0.25);
+}
+
+/* Cards “glass” para os parágrafos */
+body>p {
+    margin: 14px auto;
+    padding: 16px 18px;
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, var(--surface), rgba(255, 255, 255, 0.03));
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+/* Hover “portfolio”: sutil e chique */
+@media (hover: hover) {
+    body>p:hover {
+        transform: translateY(-2px);
+        border-color: rgba(34, 211, 238, 0.22);
+        box-shadow: var(--shadow), var(--glow);
+    }
+}
+
+/* Primeiro parágrafo como “lead” */
+body>p:first-of-type {
+    color: var(--muted);
+    border-left: 4px solid rgba(34, 211, 238, 0.55);
+}
+
+/* Tipografia */
+p {
+    margin: 0;
+    font-size: 1.02rem;
+    color: rgba(255, 255, 255, 0.86);
+}
+
+/* Destaques estilo “chip” */
+strong {
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(34, 211, 238, 0.10);
+    border: 1px solid rgba(34, 211, 238, 0.16);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.10);
+}
+
+/* Seleção de texto bonita */
+::selection {
+    background: rgba(34, 211, 238, 0.25);
+}
+
+/* Acessibilidade: foco visível (quando tiver links/botões futuramente) */
+:focus-visible {
+    outline: 3px solid rgba(34, 211, 238, 0.35);
+    outline-offset: 3px;
+    border-radius: 12px;
+}
+
+/* Responsivo */
+@media (min-width: 720px) {
+    body {
+        padding: 76px 24px;
+    }
+
+    body>p {
+        padding: 18px 20px;
+    }
+}
+
+/* Respeita usuários sensíveis a animação */
+@media (prefers-reduced-motion: reduce) {
+    body>p {
+        transition: none;
+    }
+}
